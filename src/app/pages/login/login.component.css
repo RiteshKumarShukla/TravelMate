@@ -1,0 +1,379 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px; */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.login-wrapper {
+    display: flex;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 600px;
+}
+
+/* Left Side - Login Form */
+.login-card {
+    flex: 1;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    position: relative;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    width: 48px;
+    height: 48px;
+    background: #1a5f3f;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card::after {
+    content: 'T';
+    position: absolute;
+    top: 52px;
+    left: 68px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.login-card h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    margin-top: 80px;
+    font-family: 'Inter', sans-serif;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #9ca3af;
+    margin-bottom: 48px;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-step {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* margin-bottom: 24px; */
+}
+
+.form-step label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+    display: block;
+    font-family: 'Inter', sans-serif;
+}
+
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.forgot-link {
+    font-size: 14px;
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+    color: #1a5f3f;
+}
+
+.form-step input {
+    width: 93%;
+    padding: 16px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    background: white;
+    transition: all 0.2s ease;
+    outline: none;
+    margin-top: 0;
+}
+
+.form-step input:focus {
+    border-color: #1a5f3f;
+    box-shadow: 0 0 0 3px rgba(26, 95, 63, 0.1);
+}
+
+.form-step input::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.form-step input.error-input {
+    border-color: #ef4444;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 16px 20px;
+    background: #1a5f3f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.login-btn:hover:not(:disabled) {
+    background: #145138;
+    transform: translateY(-1px);
+}
+
+.login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.loader {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.signup-link a {
+    color: #1a5f3f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Right Side - Promo */
+.promo-side {
+    flex: 1;
+    background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    position: relative;
+    color: white;
+}
+
+.promo-content h2 {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+}
+
+.promo-content h2 .highlight {
+    font-weight: bold;
+}
+
+/* Card Preview - Matching the payment UI exactly */
+.card-preview {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 400px;
+}
+
+.phone-mockup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.balance-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-small {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    backdrop-filter: blur(10px);
+    font-family: 'Inter', sans-serif;
+}
+
+.balance-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.balance-info p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    width: 40px;
+    height: 40px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h4 {
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.card-content p {
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.card-content small {
+    color: #9ca3af;
+    font-size: 12px;
+    margin: 0;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+}
+
+.card-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-brand span {
+    color: #1a5f3f;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .login-wrapper {
+        flex-direction: column;
+        max-width: 480px;
+    }
+
+    .login-card,
+    .promo-side {
+        padding: 40px 30px;
+    }
+
+    .promo-content h2 {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .card-preview {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        width: 100%;
+        margin-top: 32px;
+    }
+}

@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="login-wrapper">
+        <!-- Left side -->
+        <div class="login-card">
+            <h1>TravelMate</h1>
+            <p class="subtitle">Agent Staff Portal - Sign in to manage your journeys</p>
+
+            <div class="form-step">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" placeholder="you@example.com" [(ngModel)]="email"
+                    [class.error-input]="error" />
+
+                <div class="password-container">
+                    <label for="password">Password</label>
+                    <!-- <a href="#" class="forgot-link">Forgot Password?</a> -->
+                </div>
+                <input id="password" type="password" placeholder="Enter your password" [(ngModel)]="password"
+                    [class.error-input]="error" />
+
+                <button (click)="login()" [disabled]="loading" class="login-btn">
+                    <span *ngIf="!loading">Login</span>
+                    <span *ngIf="loading" class="loader"></span>
+                </button>
+
+                <!-- <p class="signup-link">
+          Need access? <a href="#" routerLink="/register">Contact your Admin</a>
+        </p> -->
+            </div>
+
+            <p class="error" *ngIf="error">{{ error }}</p>
+        </div>
+
+        <!-- Right side -->
+        <div class="promo-side">
+            <div class="promo-content">
+                <h2>Welcome to<br>the Future<br><span class="highlight">of Travel Operations</span></h2>
+
+                <div class="card-preview">
+                    <div class="phone-mockup">
+                        <div class="balance-card">
+                            <div class="logo-small">T</div>
+                            <div class="balance-info">
+                                <h3>127 Ongoing Tours</h3>
+                                <p>Seamless collaboration</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="card-icon">🌍</div>
+                            <div class="card-content">
+                                <h4>Tour Management</h4>
+                                <p>2,546 Bookings Processed</p>
+                                <small>Updated in real-time</small>
+                            </div>
+                            <div class="card-brand">
+                                <span>Explore More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

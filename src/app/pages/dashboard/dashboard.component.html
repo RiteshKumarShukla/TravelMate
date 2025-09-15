@@ -1,0 +1,85 @@
+<div class="dashboard-wrapper">
+  <!-- Mobile Sidebar Toggle -->
+  <button class="sidebar-toggle" (click)="toggleSidebar()">☰</button>
+  
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.active]="sidebarActive">
+    <h2 class="logo">TravelMate</h2>
+    <nav>
+      <ul>
+        <li><a routerLink="/tours" (click)="closeSidebar()">📅 Tour Management</a></li>
+        <li><a routerLink="/leaders" (click)="closeSidebar()">👤 Tour Leader Management</a></li>
+        <li><a routerLink="/optionals" (click)="closeSidebar()">⚡ Optional Services</a></li>
+        <li><a routerLink="/quotations" (click)="closeSidebar()">📝 Quotation Workflow</a></li>
+        <li><a routerLink="/support" (click)="closeSidebar()">📞 Support Requests</a></li>
+        <li><a routerLink="/notifications" (click)="closeSidebar()">🔔 Notifications</a></li>
+        <li><a routerLink="/admin" (click)="closeSidebar()">⚙️ Admin Functions</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <h1 id="ff">Welcome, Agent</h1>
+      <div class="topbar-actions">
+        <button class="notify-btn" title="Notifications">🔔</button>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <!-- Dashboard Cards -->
+    <section class="dashboard-grid">
+      <div class="card">
+        <h3 id="ff">Tour Management</h3>
+        <p>View tours, access itineraries, download invoices & vouchers, and sync with the mobile app.</p>
+        <a routerLink="/tours" class="card-link">Go to Tours</a>
+      </div>
+
+      <div class="card">
+        <h3 id="ff">Tour Leader Management</h3>
+        <p>Register leaders, assign them to tours, and manage their access rights.</p>
+        <a routerLink="/leaders" class="card-link">Manage Leaders</a>
+      </div>
+
+      <div class="card">
+        <h3 id="ff">Optional Services</h3>
+        <p>View, approve, or reject optional services defined by EI Staff.</p>
+        <a routerLink="/optionals" class="card-link">Handle Services</a>
+      </div>
+
+      <div class="card">
+        <h3 id="ff">Quotation Workflow</h3>
+        <p>Create quotation requests, review offers, approve or request modifications.</p>
+        <a routerLink="/quotations" class="card-link">Handle Quotations</a>
+      </div>
+
+      <div class="card">
+        <h3 id="ff">Support & Modifications</h3>
+        <p>Raise support or modification requests, track their progress in real time.</p>
+        <a routerLink="/support" class="card-link">Raise Request</a>
+      </div>
+
+      <div class="card">
+        <h3 id="ff">Notifications</h3>
+        <p>Stay updated with real-time notifications for tasks, approvals, and uploads.</p>
+        <a routerLink="/notifications" class="card-link">View Notifications</a>
+      </div>
+
+      <div class="card">
+        <h3 id="ff">Admin Functions</h3>
+        <p>Manage KYC details, sub-users, and access special service rates.</p>
+        <a routerLink="/admin" class="card-link">Admin Settings</a>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Toast Notification -->
+  <div class="toast" *ngIf="showToast">
+    <span>You have been logged out successfully!</span>
+  </div>
+  
+  <!-- Sidebar Overlay for Mobile -->
+  <div class="sidebar-overlay" *ngIf="sidebarActive" (click)="closeSidebar()"></div>
+</div>
