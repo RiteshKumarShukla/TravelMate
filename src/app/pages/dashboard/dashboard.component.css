@@ -6,11 +6,15 @@
   background: #f8fafc;
 }
 
+#ff1 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
 /* Sidebar */
 .sidebar {
   width: 280px;
   min-width: 280px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: inherit;
   background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
   color: white;
   padding: 30px 20px;
@@ -22,17 +26,12 @@
 }
 
 .sidebar .logo {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 40px;
   text-align: center;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-#ff {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 .sidebar nav ul {
@@ -59,6 +58,10 @@
   overflow: hidden;
 }
 
+.sidebar nav ul li a i {
+  margin-right: 10px;
+}
+
 .sidebar nav ul li a::before {
   content: '';
   position: absolute;
@@ -79,33 +82,67 @@
   left: 100%;
 }
 
-/* Mobile Sidebar Toggle */
+/* Sidebar Toggle Button (Hamburger/Cross) */
 .sidebar-toggle {
   display: none;
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
   z-index: 1001;
   background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
   border: none;
   color: white;
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Sidebar Overlay for Mobile */
+.hamburger-icon {
+  display: inline;
+}
+
+.close-icon {
+  display: none;
+  font-size: 22px;
+}
+
+/* Hidden checkbox hack for sidebar */
+.sidebar-checkbox {
+  display: none;
+}
+
+/* Sidebar Overlay */
 .sidebar-overlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 998;
+}
+
+/* Show sidebar and overlay when checkbox is checked */
+.sidebar-checkbox:checked ~ .sidebar {
+  transform: translateX(0);
+}
+
+.sidebar-checkbox:checked ~ .sidebar-overlay {
+  display: block;
+}
+
+/* Switch icon when sidebar is open */
+.sidebar-checkbox:checked + .sidebar-toggle .hamburger-icon {
   display: none;
+}
+
+.sidebar-checkbox:checked + .sidebar-toggle .close-icon {
+  display: inline;
 }
 
 /* Main Content */
@@ -141,7 +178,8 @@
   align-items: center;
 }
 
-.notify-btn, .logout-btn {
+.notify-btn,
+.logout-btn {
   background: linear-gradient(90deg, #0f5132, #14532d);
   border: none;
   color: white;
@@ -154,7 +192,8 @@
   box-shadow: 0 2px 8px rgba(15, 81, 50, 0.2);
 }
 
-.notify-btn:hover, .logout-btn:hover {
+.notify-btn:hover,
+.logout-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(15, 81, 50, 0.3);
 }
@@ -170,7 +209,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
-  /* margin-top: 20px; */
 }
 
 .card {
@@ -284,28 +322,25 @@
   .main-content {
     padding: 24px;
   }
-  
   .dashboard-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
   }
-  
   .topbar h1 {
     font-size: 28px;
   }
-  
   .card {
     padding: 24px;
   }
 }
 
-/* Mobile Landscape */
+/* Mobile */
 @media (max-width: 768px) {
   .dashboard-wrapper {
     flex-direction: column;
     position: relative;
   }
-  
+
   .sidebar {
     position: fixed;
     top: 0;
@@ -316,48 +351,48 @@
     width: 280px;
     min-width: 280px;
   }
-  
-  .sidebar.active {
-    transform: translateX(0);
-  }
-  
+
   .sidebar-toggle {
-    display: block;
+    display: flex;
   }
-  
-  .sidebar-overlay {
-    display: block;
-  }
-  
+
   .main-content {
     padding: 80px 20px 20px 20px;
     width: 100%;
   }
-  
+
+  /* Topbar items in one line */
   .topbar {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 24px;
   }
-  
+
   .topbar h1 {
-    font-size: 24px;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
   }
-  
+
   .topbar-actions {
-    align-self: flex-end;
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
-  
+
   .dashboard-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .card {
     padding: 20px;
   }
-  
+
   .toast {
     top: 80px;
     right: 10px;
@@ -371,41 +406,30 @@
   .main-content {
     padding: 70px 16px 16px 16px;
   }
-  
-  .topbar {
-    padding: 12px 0;
-  }
-  
   .topbar h1 {
-    font-size: 22px;
+    font-size: 16px;
   }
-  
-  .notify-btn, .logout-btn {
-    padding: 10px 14px;
-    font-size: 13px;
+  .notify-btn,
+  .logout-btn {
+    padding: 10px 12px;
+    font-size: 12px;
   }
-  
   .notify-btn {
     padding: 10px;
   }
-  
   .card {
     padding: 18px;
     border-radius: 12px;
   }
-  
   .card h3 {
-    font-size: 18px;
+    font-size: 16px;
   }
-  
   .card p {
     font-size: 14px;
   }
-  
   .sidebar .logo {
     font-size: 20px;
   }
-  
   .sidebar nav ul li a {
     font-size: 14px;
     padding: 10px 14px;
@@ -417,16 +441,13 @@
   .main-content {
     padding: 60px 12px 12px 12px;
   }
-  
   .dashboard-grid {
     gap: 12px;
   }
-  
   .card {
     padding: 16px;
   }
-  
   .topbar h1 {
-    font-size: 20px;
+    font-size: 14px;
   }
 }
