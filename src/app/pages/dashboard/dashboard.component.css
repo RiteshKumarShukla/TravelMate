@@ -82,39 +82,6 @@
   left: 100%;
 }
 
-/* Sidebar Toggle Button (Hamburger/Cross) */
-.sidebar-toggle {
-  display: none;
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 1001;
-  background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
-  border: none;
-  color: white;
-  padding: 12px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hamburger-icon {
-  display: inline;
-}
-
-.close-icon {
-  display: none;
-  font-size: 22px;
-}
-
-/* Hidden checkbox hack for sidebar */
-.sidebar-checkbox {
-  display: none;
-}
-
 /* Sidebar Overlay */
 .sidebar-overlay {
   display: none;
@@ -128,22 +95,14 @@
 }
 
 /* Show sidebar and overlay when checkbox is checked */
-.sidebar-checkbox:checked ~ .sidebar {
+.sidebar-checkbox:checked~.sidebar {
   transform: translateX(0);
 }
 
-.sidebar-checkbox:checked ~ .sidebar-overlay {
+.sidebar-checkbox:checked~.sidebar-overlay {
   display: block;
 }
 
-/* Switch icon when sidebar is open */
-.sidebar-checkbox:checked + .sidebar-toggle .hamburger-icon {
-  display: none;
-}
-
-.sidebar-checkbox:checked + .sidebar-toggle .close-icon {
-  display: inline;
-}
 
 /* Main Content */
 .main-content {
@@ -304,6 +263,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -322,13 +282,16 @@
   .main-content {
     padding: 24px;
   }
+
   .dashboard-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
   }
+
   .topbar h1 {
     font-size: 28px;
   }
+
   .card {
     padding: 24px;
   }
@@ -350,10 +313,6 @@
     transform: translateX(-100%);
     width: 280px;
     min-width: 280px;
-  }
-
-  .sidebar-toggle {
-    display: flex;
   }
 
   .main-content {
@@ -406,30 +365,38 @@
   .main-content {
     padding: 70px 16px 16px 16px;
   }
+
   .topbar h1 {
     font-size: 16px;
   }
+
   .notify-btn,
   .logout-btn {
     padding: 10px 12px;
     font-size: 12px;
   }
+
   .notify-btn {
     padding: 10px;
   }
+
   .card {
     padding: 18px;
     border-radius: 12px;
   }
+
   .card h3 {
     font-size: 16px;
   }
+
   .card p {
     font-size: 14px;
   }
+
   .sidebar .logo {
     font-size: 20px;
   }
+
   .sidebar nav ul li a {
     font-size: 14px;
     padding: 10px 14px;
@@ -441,13 +408,66 @@
   .main-content {
     padding: 60px 12px 12px 12px;
   }
+
   .dashboard-grid {
     gap: 12px;
   }
+
   .card {
     padding: 16px;
   }
+
   .topbar h1 {
     font-size: 14px;
   }
+}
+
+
+/* Sidebar Toggle Button (Hamburger/Cross) */
+.sidebar-toggle {
+  display: none;
+  /* hidden by default for large screens */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: flex;
+    /* visible only on small screens */
+  }
+}
+
+/* Hamburger / Close Icon */
+.hamburger-icon {
+  display: inline;
+}
+
+.close-icon {
+  display: none;
+}
+
+.sidebar-checkbox{
+  display: none;
+}
+
+/* Switch icon when sidebar is open */
+.sidebar-checkbox:checked+.sidebar-toggle .hamburger-icon {
+  display: none;
+}
+
+.sidebar-checkbox:checked+.sidebar-toggle .close-icon {
+  display: inline;
 }

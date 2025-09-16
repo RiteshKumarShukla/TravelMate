@@ -23,6 +23,6 @@ export class DashboardComponent {
     setTimeout(() => {
       this.showToast = false;
       this.router.navigate(['/']);
-    }, 1200);
+    }, 600);
   }
 }
