@@ -1,0 +1,10 @@
+.sidebar nav ul li a.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+.sidebar nav ul li a.active i {
+  color: #ffd700; /* highlight the icon, e.g. golden */
+}

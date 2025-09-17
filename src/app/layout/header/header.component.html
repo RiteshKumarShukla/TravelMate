@@ -1,0 +1,15 @@
+<header class="topbar">
+  <h1 id="ff1">{{ greeting }} {{ timeEmoji }}, {{ userName }}</h1>
+
+  <div class="topbar-actions">
+    <button class="notify-btn" title="Notifications">
+      <i class="fas fa-bell"></i>
+    </button>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" *ngIf="showToast">
+    <span>You have been logged out successfully!</span>
+  </div>
+</header>

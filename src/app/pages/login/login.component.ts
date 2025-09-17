@@ -22,31 +22,16 @@ export class LoginComponent {
     this.loading = true;
     this.error = '';
 
-    // ✅ Hardcoded admin login (no API call)
-    if (
-      this.email === 'riteshshuklagem@gmail.com' &&
-      this.password === 'admin123'
-    ) {
-      setTimeout(() => {
-        this.loading = false;
-        localStorage.setItem('user', this.email);
-        this.router.navigate(['/dashboard']);
-      }, 1200);
-      return;
-    }
-
-    // ✅ Else: Make real API call
     this.authService.login({ email: this.email, password: this.password }).subscribe({
       next: (response) => {
         this.loading = false;
-        console.log('Login success:', response);
 
-        // Store token (adjust key if backend sends differently)
+        // Store token
         if (response.token) {
           localStorage.setItem('token', response.token);
         }
 
-        localStorage.setItem('user', this.email);
+        localStorage.setItem('user', response.user ? JSON.stringify(response.user) : '');
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {

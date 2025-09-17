@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
 })
 export class DashboardComponent {
   showToast = false;

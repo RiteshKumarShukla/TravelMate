@@ -1,0 +1,75 @@
+<div class="tour-leaders-container">
+  <div class="loader" *ngIf="loading">
+    <i class="fas fa-spinner fa-spin fa-2x"></i>
+    <p>Loading Tour Leaders Info...</p>
+  </div>
+
+  <!-- Table for large screens -->
+  <table class="leaders-table" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Chat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leader of users">
+        <td>{{ leader.name }}</td>
+        <td>{{ leader.email }}</td>
+        <td>
+          <button class="chat-btn" (click)="openChat(leader)">
+            <i class="fas fa-comments"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Cards for small screens -->
+  <div class="leaders-cards">
+    <div class="leader-card" *ngFor="let leader of users">
+      <div class="card-content">
+        <h3>{{ leader.name }}</h3>
+        <p>{{ leader.email }}</p>
+      </div>
+      <button class="chat-btn" (click)="openChat(leader)">
+        <i class="fas fa-comments"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Chat Modal -->
+<div class="chat-modal" *ngIf="isChatOpen">
+  <div class="chat-modal-content">
+    <!-- Header -->
+    <header class="chat-header">
+      <div class="chat-user">
+        <i class="fas fa-user-circle"></i>
+        <span>{{ selectedUser?.name }}</span>
+      </div>
+      <!-- <button class="close-btn" (click)="closeChat()">×</button> -->
+      <button class="close-btn1" (click)="closeChat()">
+        <span><i class="fas fa-times"></i></span>
+      </button>
+    </header>
+
+    <!-- Messages -->
+    <div class="chat-body">
+      <div *ngFor="let msg of messages" [ngClass]="{'sent': msg.sender === 'me', 'received': msg.sender !== 'me'}"
+        class="chat-message">
+        <div class="bubble">{{ msg.text }}</div>
+        <span class="time">{{ msg.time }}</span>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <footer class="chat-footer">
+      <input type="text" [(ngModel)]="newMessage" (keydown.enter)="sendMessage()" placeholder="Type a message..." />
+      <button class="send-btn" (click)="sendMessage()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </footer>
+  </div>
+</div>
