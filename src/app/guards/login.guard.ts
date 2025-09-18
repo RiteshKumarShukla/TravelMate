@@ -4,15 +4,14 @@ import { CanActivate, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    const isBrowser = typeof window !== 'undefined' && !!window.localStorage;
-    const loggedIn = isBrowser ? !!localStorage.getItem('token') : false;
+    const isLoggedIn = !!localStorage.getItem('token');
 
-    if (!loggedIn) {
-      this.router.navigate(['/']);
+    if (isLoggedIn) {
+      this.router.navigate(['/dashboard']);
       return false;
     }
 
