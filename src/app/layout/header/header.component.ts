@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,18 @@ export class HeaderComponent implements OnInit {
   greeting: string = '';
   timeEmoji: string = '';
 
-  constructor(private router: Router) {}
+  dropdownOpen = false;
+  isEditProfileOpen = false;
+
+  editUser = {
+    id: 0,
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: ''
+  };
+
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.loadUser();
@@ -29,6 +41,13 @@ export class HeaderComponent implements OnInit {
         try {
           const user = JSON.parse(userData);
           this.userName = user?.name || 'Agent';
+          this.editUser = {
+            id: user?.id || 0,
+            name: user?.name || '',
+            email: user?.email || '',
+            password: '',
+            password_confirmation: ''
+          };
         } catch (error) {
           console.error('Error parsing user data:', error);
         }
@@ -48,6 +67,32 @@ export class HeaderComponent implements OnInit {
       this.greeting = 'Good Evening';
       this.timeEmoji = '🌙';
     }
+  }
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  openEditProfile() {
+    this.isEditProfileOpen = true;
+    this.dropdownOpen = false;
+  }
+
+  closeEditProfile() {
+    this.isEditProfileOpen = false;
+  }
+
+  saveProfile() {
+    this.userService.updateUserProfile(this.editUser).subscribe({
+      next: (res) => {
+        this.logout();
+        console.log('Profile updated:', res);
+      },
+      error: (err) => {
+        console.error('Update failed:', err);
+      }
+    });
+
   }
 
   logout() {

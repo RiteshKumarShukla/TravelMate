@@ -5,7 +5,15 @@
     <button class="notify-btn" title="Notifications">
       <i class="fas fa-bell"></i>
     </button>
-    <button class="logout-btn" (click)="logout()">Logout</button>
+
+    <!-- Profile dropdown -->
+    <div class="profile-dropdown" (click)="toggleDropdown()">
+      <i class="fas fa-user-circle profile-icon"></i>
+      <div class="dropdown-menu" *ngIf="dropdownOpen">
+        <button (click)="openEditProfile()">Edit Profile</button>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
   </div>
 
   <!-- Toast -->
@@ -13,3 +21,58 @@
     <span>You have been logged out successfully!</span>
   </div>
 </header>
+
+<!-- Edit Profile Modal -->
+<div class="modal" *ngIf="isEditProfileOpen">
+  <div class="modal-content">
+    <header class="modal-header">
+      <h2>Edit Profile</h2>
+      <button class="close-btn" (click)="closeEditProfile()">&times;</button>
+    </header>
+
+    <div class="modal-body">
+      <form (ngSubmit)="saveProfile()" #profileForm="ngForm">
+        <label>Name</label>
+        <input
+          type="text"
+          [(ngModel)]="editUser.name"
+          name="name"
+          required
+        />
+
+        <label>Email</label>
+        <input
+          type="email"
+          [(ngModel)]="editUser.email"
+          name="email"
+          required
+        />
+
+        <label>Password</label>
+        <input
+          type="password"
+          [(ngModel)]="editUser.password"
+          name="password"
+          placeholder="Enter new password"
+        />
+
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          [(ngModel)]="editUser.password_confirmation"
+          name="password_confirmation"
+          placeholder="Confirm new password"
+        />
+
+        <p class="disclaimer">
+          ⚠️ After changing your details, you will be logged out. Please login
+          again with your new credentials.
+        </p>
+
+        <button type="submit" class="save-btn" [disabled]="!profileForm.form.valid">
+          Save Changes
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
