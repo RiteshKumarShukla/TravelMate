@@ -86,7 +86,7 @@ export class HeaderComponent implements OnInit {
     this.userService.updateUserProfile(this.editUser).subscribe({
       next: (res) => {
         this.logout();
-        console.log('Profile updated:', res);
+        // console.log('Profile updated:', res);
       },
       error: (err) => {
         console.error('Update failed:', err);

@@ -56,7 +56,7 @@ export class TourLeadersComponent implements OnInit {
     this.userService.getUsers().subscribe({
       next: (res) => {
         this.users = res.stats.userList;
-        console.log(this.users);
+        // console.log(this.users);
         this.loading = false;
       },
       error: (err) => {
