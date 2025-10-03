@@ -12,7 +12,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  // Automatically attach FCM token from localStorage
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+    const device_id = localStorage.getItem('fcm_token') || ''; // ✅ get token from localStorage
+
+    const payload = {
+      ...credentials,
+      device_id // ✅ attach to payload
+    };
+
+    return this.http.post(`${this.apiUrl}/login`, payload);
   }
 }

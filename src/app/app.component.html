@@ -1,2 +1,8 @@
 <router-outlet></router-outlet>
 
+<div class="notification-container">
+  <div class="notification" *ngFor="let notif of notifications">
+    <strong>{{ notif.title }}</strong>
+    <p>{{ notif.body }}</p>
+  </div>
+</div>
