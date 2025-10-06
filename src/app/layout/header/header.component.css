@@ -1,6 +1,6 @@
 /* ===== Profile Dropdown ===== */
 .profile-dropdown {
-    background: linear-gradient(90deg, #0f5132, #14532d);
+    background: gray;
   border: none;
   color: white;
   padding: 12px 18px;
@@ -21,7 +21,7 @@
 }
 
 .profile-icon:hover {
-  color: linear-gradient(135deg, #1a5f3f, #2d8659);
+  color: gray;
 }
 
 .dropdown-menu {
@@ -153,7 +153,7 @@
 }
 
 .modal-body input:focus {
-  border-color:  linear-gradient(135deg, #1a5f3f, #2d8659);;
+  border-color:  grey
 }
 
 /* Disclaimer */
@@ -168,7 +168,8 @@
 
 /* Save Button */
 .save-btn {
-  background:  linear-gradient(135deg, #1a5f3f, #2d8659);
+    background: gray;
+  /* background:  linear-gradient(135deg, #1a5f3f, #2d8659); */
   color: #fff;
   font-size: 15px;
   font-weight: 500;
@@ -180,7 +181,8 @@
 }
 
 .save-btn:hover {
-  background:  linear-gradient(135deg, #1a5f3f, #2d8659);
+    background: gray;
+  /* background:  linear-gradient(135deg, #1a5f3f, #2d8659); */
 }
 
 .save-btn:disabled {

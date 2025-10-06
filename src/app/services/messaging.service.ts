@@ -14,13 +14,13 @@ export class MessagingService {
       });
 
       if (token) {
-        localStorage.setItem('fcm_token', token); // ✅ store in localStorage
-        // console.log('✅ FCM Token stored/updated:', token);
+        localStorage.setItem('fcm_token', token); // store in localStorage
+        // console.log('FCM Token stored/updated:', token);
       }
 
       return token;
     } catch (error) {
-      console.error('🚫 Permission denied or error getting token:', error);
+      console.error(' Permission denied or error getting token:', error);
       return null;
     }
   }
@@ -34,7 +34,7 @@ export class MessagingService {
   listenMessages() {
     return new Promise((resolve) => {
       onMessage(this.messaging, (payload) => {
-        // console.log('📩 Foreground message:', payload);
+        // console.log('Foreground message:', payload);
         resolve(payload);
       });
     });
